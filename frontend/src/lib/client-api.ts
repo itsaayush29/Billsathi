@@ -10,12 +10,20 @@
 //
 // NEXT_PUBLIC_API_URL should NOT be set in Vercel — the default "/backend-api"
 // rewrite is correct and is what makes CORS irrelevant for browser requests.
+//
+// We also force "/backend-api" for production browser requests so login keeps
+// the session cookie on the Vercel domain even if NEXT_PUBLIC_API_URL is set.
+function getApiUrl() {
+  if (typeof window !== "undefined" && process.env.NODE_ENV === "production") {
+    return "/backend-api";
+  }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "/backend-api";
+  return process.env.NEXT_PUBLIC_API_URL ?? "/backend-api";
+}
 
 export async function clientRequest<T>(path: string, init?: RequestInit): Promise<T> {
   try {
-    const response = await fetch(`${API_URL}${path}`, {
+    const response = await fetch(`${getApiUrl()}${path}`, {
       ...init,
       // credentials:"include" is needed if you ever call the Railway backend
       // directly from the browser. With the Vercel rewrite in place it's
