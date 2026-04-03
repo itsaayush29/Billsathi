@@ -8,14 +8,34 @@ import { env } from "./config/env.js";
 import { errorHandler, notFoundHandler } from "./middleware/error-handler.js";
 import { apiRouter } from "./routes/index.js";
 
+function normalizeOrigin(origin: string) {
+  return origin.trim().replace(/^['"]|['"]$/g, "").replace(/\/$/, "");
+}
+
 export function createApp() {
   const app = express();
+  const allowedOrigins = env.FRONTEND_URL.split(",")
+    .map(normalizeOrigin)
+    .filter(Boolean);
 
   app.set("trust proxy", 1);
 
   app.use(
     cors({
-      origin: env.FRONTEND_URL,
+      origin(origin, callback) {
+        // Allow server-to-server calls and tools that omit the Origin header.
+        if (!origin) {
+          callback(null, true);
+          return;
+        }
+
+        if (allowedOrigins.includes(normalizeOrigin(origin))) {
+          callback(null, true);
+          return;
+        }
+
+        callback(new Error(`Origin ${origin} is not allowed by CORS`));
+      },
       credentials: true
     })
   );
