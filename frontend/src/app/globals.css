@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 116, 72, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(16, 24, 39, 0.08), transparent 25%),
+    linear-gradient(180deg, #f7f1e8 0%, #ffffff 42%, #eef2ff 100%);
+  color: #101827;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-headline {
+  font-family: var(--font-headline), sans-serif;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.signature-gradient {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(24px);
+}
+
+.kinetic-shadow {
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.05);
+}
