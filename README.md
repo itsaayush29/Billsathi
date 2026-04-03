@@ -101,5 +101,9 @@ SELECT * FROM "Payment";
 - Frontend is designed for Vercel.
 - Backend and PostgreSQL are designed for Railway or a similar managed platform.
 - Authentication uses HTTP-only cookies.
+- In production, set `BACKEND_API_URL` on Vercel to your Railway API URL, for example `https://your-backend.up.railway.app/api`.
+- In production, set `FRONTEND_URL` on Railway to your Vercel origin, for example `https://your-app.vercel.app`. Multiple origins can be provided as a comma-separated list.
+- Leave `COOKIE_DOMAIN` empty unless you control the shared parent domain.
+- Replace the default `JWT_SECRET` before deploying to production.
 - Third-party providers use stub implementations by default.
 - In local development, the frontend proxies browser API calls through `/backend-api` to avoid cross-port fetch issues.

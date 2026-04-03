@@ -15,6 +15,13 @@ export function errorHandler(
   res: Response,
   _next: NextFunction
 ) {
+  if (error instanceof Error && error.message.includes("not allowed by CORS")) {
+    return res.status(403).json({
+      success: false,
+      message: "CORS: Origin not allowed"
+    });
+  }
+
   if (error instanceof ZodError) {
     return res.status(400).json({
       success: false,
