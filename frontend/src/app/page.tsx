@@ -57,9 +57,9 @@ export default async function LandingPage() {
   return (
     <div className="scroll-smooth bg-[#f9f9ff] font-body text-[#151c27] selection:bg-[#e2dfff] selection:text-[#001a42]">
       <nav className="fixed top-0 z-50 w-full bg-white/80 shadow-[0_4px_20px_rgba(79,70,229,0.05)] backdrop-blur-xl">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <div className="flex items-center gap-8">
-            <Link className="font-headline text-2xl font-bold tracking-tighter text-indigo-600" href="/">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
+          <div className="flex items-center gap-4 sm:gap-8">
+            <Link className="font-headline text-xl font-bold tracking-tighter text-indigo-600 sm:text-2xl" href="/">
               BillSathi
             </Link>
             <div className="hidden items-center gap-6 md:flex">
@@ -77,11 +77,11 @@ export default async function LandingPage() {
               </a>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <Link className="hidden scale-95 px-4 py-2 font-headline font-semibold tracking-tight text-slate-600 transition-all active:scale-90 hover:text-indigo-500 sm:block" href={secondaryHref}>
               {secondaryLabel}
             </Link>
-            <Link className="signature-gradient kinetic-shadow scale-95 rounded-lg px-6 py-2.5 font-headline font-semibold tracking-tight text-white transition-transform active:scale-90" href={primaryHref}>
+            <Link className="signature-gradient kinetic-shadow scale-95 rounded-lg px-4 py-2 text-sm font-headline font-semibold tracking-tight text-white transition-transform active:scale-90 sm:px-6 sm:py-2.5 sm:text-base" href={primaryHref}>
               {primaryLabel}
             </Link>
           </div>
@@ -89,33 +89,33 @@ export default async function LandingPage() {
       </nav>
 
       <main className="pt-20">
-        <section className="relative overflow-hidden pb-32 pt-20">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
+        <section className="relative overflow-hidden pb-20 pt-12 sm:pb-24 sm:pt-16 lg:pb-32 lg:pt-20">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12">
             <div className="z-10">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#e2dfff] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#001a42]">
                 <span className="material-symbols-outlined text-[14px]">bolt</span>
                 The Kinetic Sanctuary of Billing
               </div>
-              <h1 className="mb-6 font-headline text-5xl font-extrabold leading-[1.1] tracking-tight text-[#151c27] lg:text-7xl">
+              <h1 className="mb-6 font-headline text-4xl font-extrabold leading-[1.1] tracking-tight text-[#151c27] sm:text-5xl lg:text-7xl">
                 Create GST Invoices in <span className="italic text-[#3525cd]">30 Seconds</span>
               </h1>
-              <p className="mb-10 max-w-xl text-xl leading-relaxed text-[#464555]">
+              <p className="mb-8 max-w-xl text-base leading-relaxed text-[#464555] sm:mb-10 sm:text-xl">
                 Simple billing for small businesses. No complexity. No confusion. Wrapped in a premium experience that respects your time.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link className="signature-gradient kinetic-shadow rounded-xl px-8 py-4 font-headline text-lg font-bold text-white transition-all hover:scale-105 active:scale-95" href={primaryHref}>
+              <div className="grid gap-3 sm:flex sm:flex-wrap sm:gap-4">
+                <Link className="signature-gradient kinetic-shadow rounded-xl px-6 py-3 text-center font-headline text-base font-bold text-white transition-all hover:scale-105 active:scale-95 sm:px-8 sm:py-4 sm:text-lg" href={primaryHref}>
                   {user ? "Open Workspace" : "Get Started Free"}
                 </Link>
-                <Link className="flex items-center gap-3 rounded-xl border border-[#c7c4d8]/20 bg-white px-8 py-4 font-headline text-lg font-bold text-[#151c27] transition-all hover:bg-[#f0f3ff]" href="#solutions">
+                <Link className="flex items-center justify-center gap-3 rounded-xl border border-[#c7c4d8]/20 bg-white px-6 py-3 font-headline text-base font-bold text-[#151c27] transition-all hover:bg-[#f0f3ff] sm:px-8 sm:py-4 sm:text-lg" href="#solutions">
                   <span className="material-symbols-outlined">play_circle</span>
                   Watch Demo
                 </Link>
               </div>
-              <div className="mt-16 pt-10">
+              <div className="mt-12 pt-6 sm:mt-16 sm:pt-10">
                 <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-[#464555]">
                   Trusted by 100+ small businesses
                 </p>
-                <div className="flex items-center gap-6 opacity-60 grayscale transition-all hover:grayscale-0">
+                <div className="flex flex-wrap items-center gap-4 opacity-60 grayscale transition-all hover:grayscale-0 sm:gap-6">
                   {trustedLogos.map((logo) => (
                     <img key={logo.src} alt={logo.alt} className="h-8 w-auto" src={logo.src} />
                   ))}
@@ -125,7 +125,7 @@ export default async function LandingPage() {
 
             <div className="group relative">
               <div className="absolute -inset-4 rounded-full bg-[#3525cd]/20 blur-3xl opacity-30 transition-opacity group-hover:opacity-50" />
-              <div className="kinetic-shadow relative rotate-2 rounded-3xl border border-white/50 bg-white p-8 backdrop-blur-sm transition-transform duration-500 group-hover:rotate-0">
+              <div className="kinetic-shadow relative rounded-3xl border border-white/50 bg-white p-5 backdrop-blur-sm transition-transform duration-500 group-hover:rotate-0 sm:rotate-2 sm:p-8">
                 <div className="mb-8 flex items-start justify-between">
                   <div>
                     <h3 className="font-headline text-2xl font-extrabold">Invoice #2401</h3>
@@ -163,10 +163,10 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        <section id="features" className="bg-[#f0f3ff] py-24">
-          <div className="mx-auto max-w-7xl px-6">
+        <section id="features" className="bg-[#f0f3ff] py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mb-16 text-center">
-              <h2 className="mb-4 font-headline text-4xl font-extrabold">Precision Billing Features</h2>
+              <h2 className="mb-4 font-headline text-3xl font-extrabold sm:text-4xl">Precision Billing Features</h2>
               <p className="mx-auto max-w-2xl text-[#464555]">
                 Everything you need to manage your business finances with WhatsApp-speed interactions.
               </p>
@@ -234,10 +234,10 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        <section id="solutions" className="py-24">
-          <div className="mx-auto max-w-7xl px-6">
+        <section id="solutions" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mb-20 text-center">
-              <h2 className="mb-4 font-headline text-4xl font-extrabold">Zero Friction, Three Steps</h2>
+              <h2 className="mb-4 font-headline text-3xl font-extrabold sm:text-4xl">Zero Friction, Three Steps</h2>
               <p className="text-[#464555]">Built for entrepreneurs who hate paperwork.</p>
             </div>
             <div className="relative grid grid-cols-1 gap-12 md:grid-cols-3">
@@ -259,10 +259,10 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-[#e7eefe] py-24">
-          <div className="mx-auto max-w-7xl px-6">
+        <section className="bg-[#e7eefe] py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="kinetic-shadow overflow-hidden rounded-[40px] border border-white/20 bg-white">
-              <div className="flex min-h-[600px]">
+              <div className="flex min-h-[600px] flex-col lg:flex-row">
                 <div className="hidden w-64 border-r border-[#c7c4d8]/10 bg-[#f0f3ff] p-6 lg:block">
                   <div className="mb-10 font-headline text-xl font-bold text-[#3525cd]">BillSathi</div>
                   <div className="space-y-4">
@@ -277,10 +277,10 @@ export default async function LandingPage() {
                     </div>
                   </div>
                 </div>
-                <div className="flex-1 overflow-y-auto p-10">
-                  <div className="mb-10 flex items-center justify-between">
-                    <h2 className="font-headline text-3xl font-extrabold">Overview</h2>
-                    <Link className="signature-gradient rounded-xl px-6 py-2 text-sm font-bold text-white" href={primaryHref}>
+                <div className="flex-1 overflow-y-auto p-5 sm:p-8 lg:p-10">
+                  <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl">Overview</h2>
+                    <Link className="signature-gradient rounded-xl px-6 py-2 text-center text-sm font-bold text-white" href={primaryHref}>
                       New Invoice
                     </Link>
                   </div>
@@ -331,14 +331,14 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        <section id="pricing" className="py-24">
-          <div className="mx-auto max-w-7xl px-6">
+        <section id="pricing" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mb-16 text-center">
-              <h2 className="mb-4 font-headline text-4xl font-extrabold">Transparent Pricing</h2>
+              <h2 className="mb-4 font-headline text-3xl font-extrabold sm:text-4xl">Transparent Pricing</h2>
               <p className="text-[#464555]">Scale your business without scaling your bills.</p>
             </div>
             <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="kinetic-shadow rounded-[32px] border border-[#c7c4d8]/10 bg-white p-10">
+              <div className="kinetic-shadow rounded-[32px] border border-[#c7c4d8]/10 bg-white p-6 sm:p-10">
                 <h3 className="mb-2 font-headline text-xl font-extrabold">Starter</h3>
                 <p className="mb-6 text-sm text-[#464555]">Perfect for solo founders.</p>
                 <div className="mb-8">
@@ -362,7 +362,7 @@ export default async function LandingPage() {
               </div>
 
               <div className="signature-gradient kinetic-shadow relative rounded-[32px] p-[2px]">
-                <div className="h-full rounded-[30px] bg-white p-10">
+                <div className="h-full rounded-[30px] bg-white p-6 sm:p-10">
                   <div className="signature-gradient absolute -top-4 right-8 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest text-white">
                     Most Popular
                   </div>
@@ -393,11 +393,11 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        <section className="overflow-hidden bg-[#f0f3ff] py-24">
-          <div className="mx-auto max-w-7xl px-6">
+        <section className="overflow-hidden bg-[#f0f3ff] py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
               <div>
-                <h2 className="mb-4 font-headline text-4xl font-extrabold">Loved by Founders</h2>
+                <h2 className="mb-4 font-headline text-3xl font-extrabold sm:text-4xl">Loved by Founders</h2>
                 <p className="text-[#464555]">Join 100+ businesses who switched for simplicity.</p>
               </div>
               <div className="flex gap-4">
@@ -437,15 +437,15 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        <section className="relative py-32">
-          <div className="mx-auto max-w-4xl px-6 text-center">
-            <h2 className="mb-8 font-headline text-5xl font-extrabold leading-tight">
+        <section className="relative py-20 sm:py-32">
+          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+            <h2 className="mb-8 font-headline text-4xl font-extrabold leading-tight sm:text-5xl">
               Start creating invoices in seconds.
             </h2>
-            <p className="mx-auto mb-12 max-w-2xl text-xl text-[#464555]">
+            <p className="mx-auto mb-12 max-w-2xl text-base text-[#464555] sm:text-xl">
               Join the new era of stress-free billing. No credit card required to start.
             </p>
-            <Link className="signature-gradient kinetic-shadow mb-8 inline-block rounded-2xl px-10 py-5 font-headline text-xl font-extrabold text-white transition-all hover:scale-105 active:scale-95" href={primaryHref}>
+            <Link className="signature-gradient kinetic-shadow mb-8 inline-block rounded-2xl px-8 py-4 font-headline text-lg font-extrabold text-white transition-all hover:scale-105 active:scale-95 sm:px-10 sm:py-5 sm:text-xl" href={primaryHref}>
               {user ? "Open Dashboard" : "Get Started Free"}
             </Link>
             <div className="flex flex-wrap items-center justify-center gap-8 text-sm font-medium text-[#464555]">
@@ -463,7 +463,7 @@ export default async function LandingPage() {
         </section>
       </main>
 
-      <footer id="resources" className="w-full bg-slate-50 px-6 py-12">
+      <footer id="resources" className="w-full bg-slate-50 px-4 py-12 sm:px-6">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
             <div className="mb-4 font-headline text-xl font-bold text-slate-900">BillSathi</div>

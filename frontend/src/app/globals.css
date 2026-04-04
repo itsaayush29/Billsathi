@@ -8,11 +8,19 @@
 
 body {
   min-height: 100vh;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(255, 116, 72, 0.18), transparent 28%),
     radial-gradient(circle at top right, rgba(16, 24, 39, 0.08), transparent 25%),
     linear-gradient(180deg, #f7f1e8 0%, #ffffff 42%, #eef2ff 100%);
   color: #101827;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
 }
 
 a {

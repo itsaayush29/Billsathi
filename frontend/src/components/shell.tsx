@@ -23,13 +23,13 @@ export function Shell({
   const syncedNavigation: NavigationItem[] = [{ href: "/", label: "Home" }, ...navigation];
 
   return (
-    <div className="min-h-screen px-4 py-6 md:px-8">
+    <div className="min-h-screen px-3 py-4 sm:px-4 sm:py-6 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-6 rounded-[2rem] bg-ink px-6 py-5 text-white shadow-2xl">
+        <div className="mb-6 rounded-[2rem] bg-ink px-4 py-4 text-white shadow-2xl sm:px-6 sm:py-5">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-slate-300">{title}</p>
-              <h1 className="text-3xl font-semibold">BillSathi</h1>
+              <h1 className="text-2xl font-semibold sm:text-3xl">BillSathi</h1>
             </div>
             <div className="flex flex-wrap items-center gap-3">
               {syncedNavigation.map((item) => (
@@ -44,9 +44,9 @@ export function Shell({
               <LogoutButton />
             </div>
           </div>
-          <div className="mt-4 flex flex-wrap gap-3 text-sm text-slate-200">
-            <span>{user.name}</span>
-            <span>{user.email}</span>
+          <div className="mt-4 grid gap-2 text-sm text-slate-200 sm:flex sm:flex-wrap sm:gap-3">
+            <span className="truncate">{user.name}</span>
+            <span className="truncate">{user.email}</span>
             <span>{user.role}</span>
             <span>{user.plan}</span>
           </div>

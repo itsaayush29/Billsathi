@@ -127,10 +127,10 @@ export default async function InvoicePreviewPage({
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-4 pb-32 pt-24 md:px-8">
+      <main className="mx-auto max-w-5xl px-4 pb-32 pt-24 sm:px-6 md:px-8">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>
-            <h1 className="font-headline text-2xl font-bold text-[#151c27]">
+            <h1 className="font-headline text-xl font-bold text-[#151c27] sm:text-2xl">
               Invoice #{invoiceNumber}
             </h1>
             <p className="text-sm text-[#464555]">
@@ -148,7 +148,7 @@ export default async function InvoicePreviewPage({
         </div>
 
         <div className="overflow-hidden rounded-xl border border-[#c7c4d8]/10 bg-white shadow-[0_10px_40px_rgba(79,70,229,0.08)]">
-          <div className="p-8 md:p-12">
+          <div className="p-5 sm:p-8 md:p-12">
             <div className="mb-12 flex flex-col justify-between gap-8 md:flex-row">
               <div className="flex items-center gap-3">
                 <div className="signature-gradient flex h-12 w-12 items-center justify-center rounded-xl text-white">
@@ -273,7 +273,7 @@ export default async function InvoicePreviewPage({
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
           <div className="flex items-center gap-4 rounded-xl bg-[#f0f3ff] p-6">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#3525cd]/10 text-[#3525cd]">
               <Icon name="mail" className="h-5 w-5" />

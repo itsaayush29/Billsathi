@@ -201,7 +201,7 @@ export function RegisterFlow() {
             <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl" />
           </section>
 
-          <section className="flex w-full flex-col items-center justify-center bg-[#f9f9ff] p-6 md:w-7/12 md:p-12">
+          <section className="flex w-full flex-col items-center justify-center bg-[#f9f9ff] px-4 py-6 sm:px-6 md:w-7/12 md:p-12">
             <div className="mb-10 flex w-full items-center justify-center gap-2 md:hidden">
               <Icon name="wallet" className="h-8 w-8 text-[#3525cd]" />
               <span className="font-headline text-xl font-extrabold text-[#151c27]">BillSathi</span>
@@ -217,7 +217,7 @@ export function RegisterFlow() {
                 </div>
               </div>
 
-              <div className="kinetic-shadow rounded-xl border border-[#c7c4d8]/10 bg-white p-8">
+              <div className="kinetic-shadow rounded-xl border border-[#c7c4d8]/10 bg-white p-5 sm:p-8">
                 <div className="mb-8">
                   <h3 className="mb-2 font-headline text-2xl font-bold text-[#151c27]">
                     Account Information
@@ -365,9 +365,9 @@ export function RegisterFlow() {
             <div className="absolute -right-24 top-1/4 h-64 w-64 rounded-full bg-indigo-400/20 blur-3xl" />
           </section>
 
-          <section className="flex w-full items-center justify-center bg-[#f9f9ff] p-6 md:p-12 lg:w-1/2 lg:p-20">
+          <section className="flex w-full items-center justify-center bg-[#f9f9ff] px-4 py-6 sm:px-6 md:p-12 lg:w-1/2 lg:p-20">
             <div className="w-full max-w-xl">
-              <div className="mb-8 flex items-center justify-between">
+              <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="font-headline text-2xl font-extrabold text-[#151c27]">
                     Business Profile
@@ -387,7 +387,7 @@ export function RegisterFlow() {
                 </div>
               </div>
 
-              <div className="kinetic-shadow rounded-xl border border-[#dce2f3]/30 bg-white p-8">
+              <div className="kinetic-shadow rounded-xl border border-[#dce2f3]/30 bg-white p-5 sm:p-8">
                 <form className="space-y-8" onSubmit={submitRegistration}>
                   <div className="space-y-3">
                     <label className="block text-sm font-medium text-[#151c27]">
@@ -469,7 +469,7 @@ export function RegisterFlow() {
 
                   <div className="space-y-3">
                     <label className="block text-sm font-medium text-[#151c27]">Business Logo</label>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                       <label className="flex h-20 w-20 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#c7c4d8]/50 bg-[#e7eefe] text-[#464555] transition-colors hover:border-[#3525cd] hover:text-[#3525cd]">
                         <Icon name="upload" className="h-7 w-7" />
                         <span className="mt-1 text-[10px] font-semibold">UPLOAD</span>
@@ -520,7 +520,7 @@ export function RegisterFlow() {
                 </form>
               </div>
 
-              <div className="mt-8 flex justify-center gap-8">
+              <div className="mt-8 flex flex-wrap justify-center gap-6">
                 <button
                   type="button"
                   className="flex items-center gap-1 text-sm font-medium text-[#464555] transition-colors hover:text-[#3525cd]"
@@ -542,7 +542,7 @@ export function RegisterFlow() {
         </main>
       )}
 
-      <footer className="flex w-full flex-col items-center justify-center gap-8 border-t border-[#f0f3ff] bg-[#f9f9ff] px-6 py-8 md:flex-row">
+      <footer className="flex w-full flex-col items-center justify-center gap-6 border-t border-[#f0f3ff] bg-[#f9f9ff] px-6 py-8 md:flex-row">
         <div className="flex gap-6">
           <a className="text-xs font-medium text-slate-500 transition-colors hover:text-indigo-500" href="#">
             Privacy Policy

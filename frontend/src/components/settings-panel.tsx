@@ -141,10 +141,10 @@ export function SettingsPanel({ user }: { user: SessionUser }) {
         </div>
       </aside>
 
-      <main className="pb-24 pt-20 md:pb-8 md:pl-64">
-        <div className="mx-auto max-w-4xl px-6 py-8">
+      <main className="pb-32 pt-20 md:pb-8 md:pl-64">
+        <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 md:py-8">
           <header className="mb-10">
-            <h1 className="font-headline text-3xl font-extrabold tracking-tight text-[#151c27]">
+            <h1 className="font-headline text-2xl font-extrabold tracking-tight text-[#151c27] sm:text-3xl">
               Settings
             </h1>
             <p className="mt-2 font-medium text-[#464555]">
@@ -181,7 +181,7 @@ export function SettingsPanel({ user }: { user: SessionUser }) {
                   </p>
                 </div>
 
-                <div className="rounded-xl bg-white p-8 shadow-[0_4px_20px_rgba(79,70,229,0.05)] lg:col-span-2">
+                <div className="rounded-xl bg-white p-6 shadow-[0_4px_20px_rgba(79,70,229,0.05)] sm:p-8 lg:col-span-2">
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-wide text-[#464555]">
@@ -229,7 +229,7 @@ export function SettingsPanel({ user }: { user: SessionUser }) {
                 <h2 className="font-headline text-xl font-bold">GST &amp; Tax Compliance</h2>
               </div>
 
-              <div className="relative overflow-hidden rounded-xl bg-white p-8 shadow-[0_4px_20px_rgba(79,70,229,0.05)]">
+              <div className="relative overflow-hidden rounded-xl bg-white p-6 shadow-[0_4px_20px_rgba(79,70,229,0.05)] sm:p-8">
                 <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#6cf8bb]/5 blur-3xl" />
                 <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-2">
                   <div className="space-y-2">
@@ -348,7 +348,7 @@ export function SettingsPanel({ user }: { user: SessionUser }) {
         </Link>
       </nav>
 
-      <div className="pointer-events-none fixed bottom-20 left-0 w-full px-6 py-4 md:hidden">
+      <div className="pointer-events-none fixed bottom-20 left-0 w-full px-4 py-4 sm:px-6 md:hidden">
         <button
           type="button"
           onClick={saveProfile}

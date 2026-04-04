@@ -250,7 +250,7 @@ export default async function InvoicesPage() {
         </section>
 
         <div className="overflow-hidden rounded-xl bg-white shadow-[0_4px_20px_rgba(79,70,229,0.05)]">
-          <div className="flex flex-col justify-between gap-4 border-b border-[#e7eefe] p-6 md:flex-row md:items-center">
+          <div className="flex flex-col justify-between gap-4 border-b border-[#e7eefe] p-4 sm:p-6 md:flex-row md:items-center">
             <div className="relative w-full md:w-96">
               <Icon name="search" className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#464555]" />
               <input
@@ -259,8 +259,8 @@ export default async function InvoicesPage() {
                 type="text"
               />
             </div>
-            <div className="flex items-center gap-2">
-              <span className="mr-2 text-sm font-semibold text-[#464555]">Sort by:</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm font-semibold text-[#464555]">Sort by:</span>
               <select className="cursor-pointer border-none bg-transparent text-sm font-bold text-[#3525cd] focus:ring-0">
                 <option>Recent First</option>
                 <option>Amount: High to Low</option>
@@ -385,19 +385,19 @@ export default async function InvoicesPage() {
             )}
           </div>
 
-          <div className="flex items-center justify-between p-6">
-            <span className="hidden text-sm font-medium text-[#464555] sm:inline">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-4 sm:p-6">
+            <span className="text-sm font-medium text-[#464555]">
               Showing <span className="font-bold text-[#151c27]">1-{Math.min(invoices.length, 10)}</span>{" "}
               of {totalInvoices} invoices
             </span>
-            <div className="ml-auto flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-1 sm:gap-2">
               <button className="rounded-lg border border-[#e7eefe] p-2 opacity-50" disabled>
                 <Icon name="chevronLeft" className="h-5 w-5" />
               </button>
               <button className="h-10 w-10 rounded-lg bg-[#3525cd] text-sm font-bold text-white">1</button>
-              <button className="h-10 w-10 rounded-lg text-sm font-bold text-[#151c27] transition-colors hover:bg-[#f0f3ff]">2</button>
-              <button className="h-10 w-10 rounded-lg text-sm font-bold text-[#151c27] transition-colors hover:bg-[#f0f3ff]">3</button>
-              <span className="mx-1 text-[#777587]">...</span>
+              <button className="hidden h-10 w-10 rounded-lg text-sm font-bold text-[#151c27] transition-colors hover:bg-[#f0f3ff] sm:block">2</button>
+              <button className="hidden h-10 w-10 rounded-lg text-sm font-bold text-[#151c27] transition-colors hover:bg-[#f0f3ff] sm:block">3</button>
+              <span className="mx-1 hidden text-[#777587] sm:inline">...</span>
               <button className="rounded-lg border border-[#e7eefe] p-2 transition-colors hover:bg-[#f0f3ff]">
                 <Icon name="chevronRight" className="h-5 w-5" />
               </button>

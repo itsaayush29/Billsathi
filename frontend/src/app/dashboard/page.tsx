@@ -181,24 +181,24 @@ export default async function DashboardPage() {
         </div>
       </header>
 
-      <main className="mx-auto min-h-screen max-w-7xl px-6 pb-24 pt-20 md:ml-64 md:px-10 md:pb-8 md:pt-0">
+      <main className="mx-auto min-h-screen max-w-7xl px-4 pb-24 pt-20 sm:px-6 md:ml-64 md:px-10 md:pb-8 md:pt-0">
         <header className="py-8 md:flex md:items-center md:justify-between">
           <div>
-            <h2 className="font-headline text-3xl font-black tracking-tight text-[#151c27]">
+            <h2 className="font-headline text-2xl font-black tracking-tight text-[#151c27] sm:text-3xl">
               Dashboard
             </h2>
             <p className="mt-1 text-[#464555]">
               Welcome back, {user.name}. Here&apos;s your financial overview for this month.
             </p>
           </div>
-          <div className="mt-6 flex flex-wrap gap-3 md:mt-0">
-            <button className="flex items-center gap-2 rounded-xl bg-[#e2dfff] px-5 py-2.5 font-semibold text-indigo-600 transition-all hover:bg-indigo-100">
+          <div className="mt-6 grid w-full gap-3 sm:flex sm:flex-wrap md:mt-0 md:w-auto">
+            <button className="flex items-center justify-center gap-2 rounded-xl bg-[#e2dfff] px-5 py-2.5 font-semibold text-indigo-600 transition-all hover:bg-indigo-100">
               <Icon name="download" className="h-5 w-5" />
               <span className="text-sm">Reports</span>
             </button>
             <Link
               href="/invoices/new"
-              className="signature-gradient flex items-center gap-2 rounded-xl px-6 py-2.5 font-bold text-white shadow-lg shadow-indigo-100 transition-transform active:scale-95"
+              className="signature-gradient flex items-center justify-center gap-2 rounded-xl px-6 py-2.5 font-bold text-white shadow-lg shadow-indigo-100 transition-transform active:scale-95"
             >
               <Icon name="addCircle" className="h-5 w-5" />
               <span className="text-sm">New Invoice</span>
@@ -260,7 +260,7 @@ export default async function DashboardPage() {
             </div>
 
             <div className="overflow-hidden rounded-xl border border-slate-50 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
-              <div className="overflow-x-auto">
+              <div className="hidden overflow-x-auto md:block">
                 <table className="w-full border-collapse text-left">
                   <thead>
                     <tr className="bg-slate-50/50">
@@ -334,6 +334,57 @@ export default async function DashboardPage() {
                     )}
                   </tbody>
                 </table>
+              </div>
+              <div className="divide-y divide-slate-100 md:hidden">
+                {invoices.length > 0 ? (
+                  invoices.map((invoice) => {
+                    const customerName = invoice.customer?.name ?? "Walk-in Customer";
+                    const initials = getInitials(customerName);
+
+                    return (
+                      <Link
+                        key={invoice.id}
+                        href={`/invoices/${invoice.id}`}
+                        className="block p-4 active:bg-slate-50/50"
+                      >
+                        <div className="mb-3 flex items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="text-sm font-bold text-[#151c27]">
+                              #{invoice.id.slice(-6).toUpperCase()}
+                            </p>
+                            <p className="text-xs text-slate-400">
+                              {new Date(invoice.invoiceDate).toLocaleDateString("en-IN", {
+                                day: "numeric",
+                                month: "short",
+                                year: "numeric"
+                              })}
+                            </p>
+                          </div>
+                          <span
+                            className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getStatusBadge(invoice.status)}`}
+                          >
+                            {getStatusLabel(invoice.status)}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex min-w-0 items-center gap-3">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e2dfff] text-xs font-bold text-indigo-600">
+                              {initials}
+                            </div>
+                            <span className="truncate text-sm font-medium">{customerName}</span>
+                          </div>
+                          <span className="shrink-0 text-sm font-bold">
+                            {formatCurrency(invoice.amount)}
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })
+                ) : (
+                  <div className="px-6 py-10 text-center text-sm text-slate-500">
+                    No invoices yet. Create your first invoice to populate the dashboard.
+                  </div>
+                )}
               </div>
             </div>
           </section>

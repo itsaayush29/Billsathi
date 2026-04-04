@@ -11,7 +11,7 @@ export default async function RegisterPage() {
 
   return (
     <div>
-      <div className="absolute left-6 top-6 z-20">
+      <div className="absolute left-4 top-4 z-20 sm:left-6 sm:top-6">
         <Link
           href="/"
           className="inline-flex rounded-full border border-slate-300/60 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-700 backdrop-blur"
