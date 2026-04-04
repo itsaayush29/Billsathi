@@ -18,6 +18,9 @@ export const invoiceParamsSchema = z.object({
 
 export const createInvoiceSchema = z.object({
   customerId: z.string().min(1).optional(),
+  customerName: z.string().trim().min(1).max(120).optional(),
+  phone: z.string().trim().min(10).max(20).optional(),
+  email: z.string().trim().email().optional(),
   amount: z.number().nonnegative(),
   status: z.nativeEnum(InvoiceStatus).default(InvoiceStatus.DRAFT),
   invoiceDate: z.string().datetime(),

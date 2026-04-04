@@ -70,12 +70,17 @@ export async function createInvoice(
   userId: string,
   input: {
     customerId?: string;
+    customerName?: string;
+    phone?: string;
+    email?: string;
     amount: number;
     status: string;
     invoiceDate: string;
     items: InvoiceItems;
   }
 ) {
+  let customerId = input.customerId;
+
   if (input.customerId) {
     const customer = await prisma.customer.findFirst({
       where: { id: input.customerId, userId }
@@ -83,6 +88,38 @@ export async function createInvoice(
     if (!customer) {
       throw createHttpError(404, "Customer not found");
     }
+
+    const nextName = input.customerName?.trim();
+    const nextPhone = input.phone?.trim();
+    const nextEmail = input.email?.trim();
+
+    if (
+      (nextName && nextName !== customer.name) ||
+      (nextPhone !== undefined && nextPhone !== (customer.phone ?? undefined)) ||
+      (nextEmail !== undefined && nextEmail !== (customer.email ?? undefined))
+    ) {
+      await prisma.customer.update({
+        where: { id: customer.id },
+        data: {
+          name: nextName || customer.name,
+          phone: nextPhone || null,
+          email: nextEmail || null
+        }
+      });
+    }
+  }
+
+  if (!customerId && input.customerName?.trim()) {
+    const customer = await prisma.customer.create({
+      data: {
+        userId,
+        name: input.customerName.trim(),
+        phone: input.phone?.trim() || undefined,
+        email: input.email?.trim() || undefined
+      }
+    });
+
+    customerId = customer.id;
   }
 
   const paymentOrder = await paymentProvider.createOrder({
@@ -93,7 +130,7 @@ export async function createInvoice(
   const invoice = await prisma.invoice.create({
     data: {
       userId,
-      customerId: input.customerId,
+      customerId,
       amount: new Prisma.Decimal(input.amount),
       status: input.status as never,
       invoiceDate: new Date(input.invoiceDate),

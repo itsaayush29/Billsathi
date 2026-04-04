@@ -61,10 +61,22 @@ export function InvoiceBuilder({
   const gst = subtotal * 0.18;
   const finalAmount = subtotal + gst;
 
+  function normalizePhone(value: string) {
+    const digits = value.replace(/\D/g, "");
+    return digits.startsWith("91") && digits.length > 10 ? digits.slice(2, 12) : digits.slice(-10);
+  }
+
+  function normalizeDecimal(value: string) {
+    const sanitized = value.replace(/[^\d.]/g, "");
+    const [whole = "", ...fractionParts] = sanitized.split(".");
+    const fraction = fractionParts.join("");
+    return fraction ? `${whole}.${fraction.slice(0, 2)}` : whole;
+  }
+
   function selectCustomer(customer: Customer) {
     setSelectedCustomerId(customer.id);
     setCustomerName(customer.name);
-    setPhone(customer.phone ?? "");
+    setPhone(normalizePhone(customer.phone ?? ""));
   }
 
   function updateItem(id: string, field: keyof Omit<InvoiceItem, "id">, value: string) {
@@ -116,6 +128,8 @@ export function InvoiceBuilder({
       method: "POST",
       body: JSON.stringify({
         customerId: selectedCustomerId || undefined,
+        customerName: customerName.trim(),
+        phone: normalizePhone(phone),
         amount: finalAmount,
         status,
         invoiceDate: new Date().toISOString(),
@@ -319,7 +333,7 @@ export function InvoiceBuilder({
                     type="tel"
                     value={phone}
                     onFocus={() => setActiveStep(1)}
-                    onChange={(event) => setPhone(event.target.value)}
+                    onChange={(event) => setPhone(normalizePhone(event.target.value))}
                   />
                 </div>
               </div>
@@ -359,6 +373,7 @@ export function InvoiceBuilder({
                         className="w-full rounded-lg border-0 bg-[#f0f3ff] px-3 py-2 text-sm font-semibold"
                         type="text"
                         value={item.name}
+                        placeholder="Enter item name"
                         onFocus={() => setActiveStep(2)}
                         onChange={(event) => updateItem(item.id, "name", event.target.value)}
                       />
@@ -369,10 +384,14 @@ export function InvoiceBuilder({
                       </label>
                       <input
                         className="w-full rounded-lg border-0 bg-[#f0f3ff] px-3 py-2 text-sm font-semibold"
-                        type="number"
-                        value={item.unitPrice}
+                        type="text"
+                        inputMode="decimal"
+                        placeholder="Enter price"
+                        value={item.unitPrice === 0 ? "" : item.unitPrice}
                         onFocus={() => setActiveStep(2)}
-                        onChange={(event) => updateItem(item.id, "unitPrice", event.target.value)}
+                        onChange={(event) =>
+                          updateItem(item.id, "unitPrice", normalizeDecimal(event.target.value))
+                        }
                       />
                     </div>
                     <div>
